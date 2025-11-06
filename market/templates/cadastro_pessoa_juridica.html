@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Pessoa Jurídica</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Pessoa Jurídica</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Dados Empresariais</legend>
+                {{ pessoa_form.as_p }}
+            </fieldset>
+
+            <fieldset>
+                <legend>Endereço</legend>
+                {{ endereco_form.as_p }}
+            </fieldset>
+
+            <button type="submit">Salvar</button>
+        </form>
+
+        <a href="{% url 'index' %}">Voltar</a>
+    </div>
+</body>
+</html>

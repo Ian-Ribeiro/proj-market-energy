@@ -1,0 +1,47 @@
+from django.db import models
+
+
+class Endereco(models.Model):
+    cep = models.CharField(max_length=9)
+    logradouro = models.CharField(max_length=150)
+    numero = models.CharField(max_length=10)
+    complemento = models.CharField(max_length=50, blank=True, null=True)
+    bairro = models.CharField(max_length=80)
+    cidade = models.CharField(max_length=100)
+    estado = models.CharField(max_length=2)
+    pais = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.logradouro}, {self.numero} - {self.cidade}/{self.estado}"
+
+
+class Cliente(models.Model):
+    email = models.EmailField()
+    telefone_principal = models.CharField(max_length=15)
+    telefone_secundario = models.CharField(max_length=15, blank=True, null=True)
+    site = models.URLField(blank=True, null=True)
+    endereco = models.OneToOneField(Endereco, on_delete=models.CASCADE)
+
+    class Meta:
+        abstract = True
+
+
+class PessoaFisica(Cliente):
+    nome = models.CharField(max_length=150)
+    cpf = models.CharField(max_length=11, unique=True)
+    rg = models.CharField(max_length=20, blank=True, null=True)
+    data_nascimento = models.DateField()
+
+    def __str__(self):
+        return self.nome
+
+
+class PessoaJuridica(Cliente):
+    razao_social = models.CharField(max_length=150)
+    nome_fantasia = models.CharField(max_length=150, blank=True, null=True)
+    cnpj = models.CharField(max_length=14, unique=True)
+    inscricao_estadual = models.CharField(max_length=20, blank=True, null=True)
+    data_abertura = models.DateField()
+
+    def __str__(self):
+        return self.razao_social

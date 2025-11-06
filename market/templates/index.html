@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Cadastro</h1>
+        <div class="index-links">
+            <a href="{% url 'cadastrar_pessoa_fisica' %}">Cadastrar Pessoa Física</a>
+            <a href="{% url 'cadastrar_pessoa_juridica' %}">Cadastrar Pessoa Jurídica</a>
+        </div>
+    </div>
+</body>
+</html>
