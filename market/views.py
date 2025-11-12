@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import PessoaFisicaForm, PessoaJuridicaForm, EnderecoForm
+from .forms import PessoaFisicaForm, PessoaJuridicaForm, EnderecoForm, ProdutoForm
 
 
 def index(request):
@@ -45,4 +45,18 @@ def cadastrar_pessoa_juridica(request):
     return render(request, 'cadastro_pessoa_juridica.html', {
         'pessoa_form': pessoa_form,
         'endereco_form': endereco_form,
+    })
+    
+def cadastrar_produto(request):
+    if request.method == 'POST':
+        produto_form = ProdutoForm(request.POST)
+
+        if produto_form.is_valid():
+            produto_form.save()
+            return redirect('index')
+    else:
+        produto_form = ProdutoForm()
+
+    return render(request, 'cadastro_produto.html', {
+        'produto_form': produto_form,
     })

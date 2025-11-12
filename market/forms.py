@@ -1,5 +1,5 @@
 from django import forms
-from .models import PessoaFisica, PessoaJuridica, Endereco
+from .models import PessoaFisica, PessoaJuridica, Endereco, Produto
 
 
 class EnderecoForm(forms.ModelForm):
@@ -24,3 +24,8 @@ class PessoaJuridicaForm(forms.ModelForm):
             'razao_social', 'nome_fantasia', 'cnpj', 'inscricao_estadual', 'data_abertura',
             'email', 'telefone_principal', 'telefone_secundario', 'site',
         ]
+
+class ProdutoForm(forms.ModelForm):
+    class Meta:
+        model = Produto
+        fields = '__all__'
