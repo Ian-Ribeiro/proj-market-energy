@@ -9,7 +9,7 @@
     <div class="container">
         <h1>Cadastro de Produto</h1>
 
-        <form method="post">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <fieldset>
                 <legend>Dados do Produto</legend>

@@ -1,0 +1,21 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/prod.css' %}">
+<body>
+    <div>
+        {% for produto in produtos %}
+        <div class="container-prod">
+            {% if produto.imagem %}
+                <img src="{{ produto.imagem.url }}" width="250">
+            {% else %}
+                <p>Sem imagem</p>
+            {% endif %}
+
+            <h3>{{ produto.nome }}</h3>
+            <p>{{ produto.descricao }}</p>
+            <p>R$ {{ produto.preco }}</p>
+        </div>
+    {% endfor %}
+    </div>
+    <a href="{% url 'cadastro_produto'%}">Cadastrar Novo Produto</a>
+</body>
+</html>

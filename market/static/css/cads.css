@@ -1,0 +1,30 @@
+.cads-container{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+.title-01{
+    font-size: 30px;
+    color: rgb(234, 97, 12);
+}
+.text-01{
+    font-size: 17px;
+    padding-bottom: 30px;
+}
+.cads-itens{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    list-style: none;
+    gap: 50px
+}
+.button-01{
+    font-size: 13px;
+    padding: 10px;
+    font-weight: 600;
+    width: 250px;
+    height: 50px;
+    border: 0px;
+    border-radius: 30px;
+    color: white;
+    background-color: rgb(234, 97, 12);
+}

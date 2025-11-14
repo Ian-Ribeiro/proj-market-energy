@@ -3,7 +3,8 @@ from market import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('cadastrar/pessoa-fisica/', views.cadastrar_pessoa_fisica, name='cadastrar_pessoa_fisica'),
-    path('cadastrar/pessoa-juridica/', views.cadastrar_pessoa_juridica, name='cadastrar_pessoa_juridica'),
-    path('cadastrar/produto/', views.cadastrar_produto, name='cadastrar_produto'),
+    path('cads/', views.cads, name='cads'),
+    path('cadastro/cadastro_pessoa_fisica/', views.cadastrar_pessoa_fisica, name='cadastro_pessoa_fisica'),
+    path('cadastro/cadastro_pessoa_juridica/', views.cadastrar_pessoa_juridica, name='cadastro_pessoa_juridica'),
+    path('cadastro/cadastro_produto/', views.cadastrar_produto, name='cadastro_produto'),
 ]

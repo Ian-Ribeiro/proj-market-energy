@@ -1,16 +1,16 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solar Market</title>
+    <title>Document</title>
+</head>
+<body>
+    {% load static %}
+    {% include 'header.html' %}
+    <div>
+        {% include 'produtos.html' %}
+    </div>
     
-        <div class="buttons">
-            <a href="{% url 'cadastrar_pessoa_fisica' %}" class="btn">Pessoa Física</a>
-            <a href="{% url 'cadastrar_pessoa_juridica' %}" class="btn">Pessoa Jurídica</a>
-            <a href="{% url 'cadastrar_produto' %}" class="btn">Produto</a>
-        </div>
-
 </body>
 </html>

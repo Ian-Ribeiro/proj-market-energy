@@ -1,0 +1,13 @@
+<!--cabeçalho padrão das páginas-->
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<header>
+    <div class="cabecalho">
+        <h1 class="logo-text">Solarys.com</h1>
+        <nav class="nav-itens">
+            <li><a href="{% url 'index' %}" class="link-01">Início</a></li>
+            <li><a href="{% url 'cads'%}" class="link-01">Cadastre-se</a></li>
+            <li><a href="#" class="link-01">Sobre</a></li>
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/cads.css' %}">
+<body>
+    {% include 'header.html' %}
+    <div class="cads-container">
+        <h2 class="title-01">Cadastro</h2>
+        <p class="text-01">Escolha uma das opções abaixo para se cadastrar:</p>
+        <ul class="cads-itens">
+            <li><a href="{% url 'cadastro_pessoa_fisica' %}"><button class="button-01">Cadastro Pessoa Física</button></a></li>
+            <li><a href="{% url 'cadastro_pessoa_juridica' %}"><button class="button-01">Cadastro Pessoa Jurídica</button></a></li>
+        </ul>
+    </div>
+</body>
+</html>

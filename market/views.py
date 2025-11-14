@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
 from .forms import PessoaFisicaForm, PessoaJuridicaForm, EnderecoForm, ProdutoForm
+from .models import Produto
 
 
 def index(request):
-    return render(request, 'index.html')
+    produtos = Produto.objects.all()
+    return render(request, 'index.html', {'produtos': produtos})
+
+def cads(request):
+    return render(request, 'cads.html')
 
 
 def cadastrar_pessoa_fisica(request):
@@ -21,7 +26,7 @@ def cadastrar_pessoa_fisica(request):
         pessoa_form = PessoaFisicaForm()
         endereco_form = EnderecoForm()
 
-    return render(request, 'cadastro_pessoa_fisica.html', {
+    return render(request, 'cadastro/cadastro_pessoa_fisica.html', {
         'pessoa_form': pessoa_form,
         'endereco_form': endereco_form,
     })
@@ -42,14 +47,14 @@ def cadastrar_pessoa_juridica(request):
         pessoa_form = PessoaJuridicaForm()
         endereco_form = EnderecoForm()
 
-    return render(request, 'cadastro_pessoa_juridica.html', {
+    return render(request, 'cadastro/cadastro_pessoa_juridica.html', {
         'pessoa_form': pessoa_form,
         'endereco_form': endereco_form,
     })
     
 def cadastrar_produto(request):
     if request.method == 'POST':
-        produto_form = ProdutoForm(request.POST)
+        produto_form = ProdutoForm(request.POST, request.FILES)
 
         if produto_form.is_valid():
             produto_form.save()
@@ -57,6 +62,6 @@ def cadastrar_produto(request):
     else:
         produto_form = ProdutoForm()
 
-    return render(request, 'cadastro_produto.html', {
+    return render(request, 'cadastro/cadastro_produto.html', {
         'produto_form': produto_form,
     })
