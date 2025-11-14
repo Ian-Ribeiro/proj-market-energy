@@ -27,4 +27,10 @@
     border-radius: 30px;
     color: white;
     background-color: rgb(234, 97, 12);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.button-01:hover{
+    background-color: #7f7f7f;
+    transform: scale(1.05);
 }

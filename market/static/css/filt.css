@@ -1,0 +1,18 @@
+.filtros{
+    display: flex;
+    justify-content: start;
+    padding-left: 40px;
+    padding-right: 40px;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.link-filt{
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color:rgb(234, 97, 12);
+}
+.link-filt:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    color: #7f7f7f;
+}

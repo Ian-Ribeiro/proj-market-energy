@@ -20,3 +20,8 @@
     text-decoration: none;
     font-weight: 400;
 }
+.link-01:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    color: #7f7f7f;
+}

@@ -4,8 +4,19 @@ from .models import Produto
 
 
 def index(request):
-    produtos = Produto.objects.all()
-    return render(request, 'index.html', {'produtos': produtos})
+    categoria = request.GET.get('categoria')
+    categorias = Produto.objects.values_list('categoria', flat=True).distinct()
+
+    if categoria:
+        produtos = Produto.objects.filter(categoria=categoria)
+    else:
+        produtos = Produto.objects.all()
+
+    return render(request, 'index.html', {
+        'produtos': produtos,
+        'categorias': categorias,
+        'categoria_selecionada': categoria
+    })
 
 def cads(request):
     return render(request, 'cads.html')
