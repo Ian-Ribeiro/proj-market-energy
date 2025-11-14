@@ -62,17 +62,3 @@ def cadastrar_pessoa_juridica(request):
         'pessoa_form': pessoa_form,
         'endereco_form': endereco_form,
     })
-    
-def cadastrar_produto(request):
-    if request.method == 'POST':
-        produto_form = ProdutoForm(request.POST, request.FILES)
-
-        if produto_form.is_valid():
-            produto_form.save()
-            return redirect('index')
-    else:
-        produto_form = ProdutoForm()
-
-    return render(request, 'cadastro/cadastro_produto.html', {
-        'produto_form': produto_form,
-    })
