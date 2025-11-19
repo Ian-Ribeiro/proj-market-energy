@@ -1,24 +1,26 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/prod.css' %}">
+<div class="lista-produtos">
+    {% for produto in produtos %}
+        <div class="card-produto">
 
-<body>
+            {% if produto.imagem %}
+                <img src="{{ produto.imagem.url }}" class="img-produto">
+            {% else %}
+                <div class="img-produto" style="background:#ccc;display:flex;justify-content:center;align-items:center;">
+                    Sem imagem
+                </div>
+            {% endif %}
 
-    <div class="lista-produtos">
-        {% for produto in produtos %}
-            <div class="card-produto">
+            <h3>{{ produto.nome }}</h3>
+            <p>{{ produto.descricao }}</p>
+            <p class="preco">R$ {{ produto.preco }}</p>
 
-                {% if produto.imagem %}
-                    <img src="{{ produto.imagem.url }}" class="img-produto">
-                {% else %}
-                    <div class="sem-imagem">Sem imagem</div>
-                {% endif %}
+            <a href="{% url 'produto_detalhe' produto.id %}" class="btn">Ver mais</a>
 
-                <h3>{{ produto.nome }}</h3>
-                <p class="descricao">{{ produto.descricao }}</p>
-                <p class="preco">R$ {{ produto.preco }}</p>
-
-            </div>
-        {% endfor %}
-    </div>
-</body>
-</html>
+            {% if produto.disponivel %}
+                <p style="color:green;">Disponível</p>
+            {% else %}
+                <p style="color:red;">Indisponível</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

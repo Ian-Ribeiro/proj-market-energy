@@ -1,14 +1,15 @@
-<!--cabeçalho padrão das páginas-->
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/header.css' %}">
 <header>
     <div class="cabecalho">
         <h1 class="logo-text">Solarys.com</h1>
-        <nav class="nav-itens">
-            <li><a href="{% url 'index' %}" class="link-01">Início</a></li>
-            <li><a href="{% url 'cads'%}" class="link-01">Cadastre-se</a></li>
-            <li><a href="{% url 'admin:index'%}" class="link-01">Entrar</a></li>
-            <li><a href="#" class="link-01">Sobre</a></li>
+
+        <nav>
+            <ul class="nav-itens">
+                <li><a href="{% url 'index' %}">Início</a></li>
+                <li><a href="{% url 'cads' %}">Cadastre-se</a></li>
+                <li><a href="{% url 'admin:index' %}">Entrar</a></li>
+                <li><a href="{% url 'carrinho'%}">Meu Carrinho</a></li>
+                <li><a href="#">Sobre</a></li>
+            </ul>
         </nav>
     </div>
 </header>

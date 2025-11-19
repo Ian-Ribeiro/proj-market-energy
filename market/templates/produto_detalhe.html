@@ -1,0 +1,24 @@
+{% include 'header.html'%}
+<div class="produto-detalhe">
+
+    <h1>{{ produto.nome }}</h1>
+
+    <img src="{{ produto.imagem.url }}">
+
+    <p><strong>Categoria:</strong> {{ produto.categoria }}</p>
+    <p><strong>Descrição:</strong> {{ produto.descricao }}</p>
+    <p><strong>Preço:</strong> R$ {{ produto.preco }}</p>
+    <p><strong>Estoque:</strong> {{ produto.estoque }}</p>
+
+    {% if produto.disponivel %}
+        <p style="color:green;">Disponível</p>
+    {% else %}
+        <p style="color:red;">Indisponível</p>
+    {% endif %}
+
+    <form action="{% url 'adicionar_carrinho' produto.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Adicionar ao carrinho</button>
+    </form>
+
+</div>

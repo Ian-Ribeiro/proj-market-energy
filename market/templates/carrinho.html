@@ -1,0 +1,41 @@
+{% include 'header.html'%}
+<div class="carrinho-container">
+
+    <h1>Seu carrinho</h1>
+
+    {% if produtos %}
+    <table class="tabela-carrinho">
+        <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Subtotal</th>
+            <th>Ações</th>
+        </tr>
+
+        {% for item in produtos %}
+        <tr>
+            <td class="produto-info">
+                <img src="{{ item.produto.imagem.url }}" alt="{{ item.produto.nome }}">
+                <span>{{ item.produto.nome }}</span>
+            </td>
+
+            <td>{{ item.quantidade }}</td>
+
+            <td>R$ {{ item.subtotal }}</td>
+
+            <td>
+                <a class="btn-remover" href="{% url 'remover_carrinho' item.produto.id %}">
+                    Remover
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2 class="total">Total: R$ {{ total }}</h2>
+
+    {% else %}
+        <p>Seu carrinho está vazio.</p>
+    {% endif %}
+
+</div>

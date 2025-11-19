@@ -54,5 +54,10 @@ class Produto(models.Model):
     estoque = models.PositiveIntegerField()
     imagem = models.ImageField(upload_to='produtos/', blank=True, null=True)
 
+    @property
+    def disponivel(self):
+        return self.estoque > 0
+
     def __str__(self):
         return self.nome
+
