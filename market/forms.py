@@ -13,7 +13,7 @@ class PessoaFisicaForm(forms.ModelForm):
         model = PessoaFisica
         fields = [
             'nome', 'cpf', 'rg', 'data_nascimento',
-            'email', 'telefone_principal', 'telefone_secundario', 'site',
+            'email', 'telefone_principal', 'telefone_secundario',
         ]
 
 

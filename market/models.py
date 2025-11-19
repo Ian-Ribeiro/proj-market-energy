@@ -19,7 +19,6 @@ class Cliente(models.Model):
     email = models.EmailField()
     telefone_principal = models.CharField(max_length=15)
     telefone_secundario = models.CharField(max_length=15, blank=True, null=True)
-    site = models.URLField(blank=True, null=True)
     endereco = models.OneToOneField(Endereco, on_delete=models.CASCADE)
 
     class Meta:
@@ -42,6 +41,7 @@ class PessoaJuridica(Cliente):
     cnpj = models.CharField(max_length=14, unique=True)
     inscricao_estadual = models.CharField(max_length=20, blank=True, null=True)
     data_abertura = models.DateField()
+    site = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.razao_social
