@@ -6,6 +6,85 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+        /* ====== CONTAINER PRINCIPAL ====== */
+        .cads-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* ====== TÍTULO ====== */
+        .title-01 {
+            font-size: 2rem;
+            color: #111827;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        /* ====== TEXTO EXPLICATIVO ====== */
+        .text-01 {
+            font-size: 1.1rem;
+            color: #4b5563;
+        }
+
+        /* ====== LISTA DE BOTÕES ====== */
+        .cads-itens {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* ====== BOTÕES ====== */
+        .button-01 {
+            background: #facc15;
+            color: #000;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            width: 100%;
+        }
+
+        .button-01:hover {
+            background: #eab308;
+            transform: scale(1.03);
+        }
+
+        /* ====== RESPONSIVO ====== */
+        @media (max-width: 480px) {
+            .cads-container {
+                padding: 20px;
+                margin: 30px 15px;
+            }
+
+            .title-01 {
+                font-size: 1.6rem;
+            }
+
+            .text-01 {
+                font-size: 1rem;
+            }
+
+            .button-01 {
+                font-size: 1rem;
+                padding: 10px 16px;
+            }
+        }
+    </style>
     <div>
         {% include 'header.html' %}
     </div>

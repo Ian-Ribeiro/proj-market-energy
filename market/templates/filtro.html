@@ -1,3 +1,63 @@
+<style>
+    /* ====== CONTAINER DOS FILTROS ====== */
+.filtros {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+
+    margin: 25px 0;
+    padding: 15px 20px;
+    background: #f3f4f6;
+    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+}
+
+/* ====== LINKS DOS FILTROS ====== */
+.link-filt {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+
+    color: #374151;
+    background: #e5e7eb;
+
+    padding: 8px 14px;
+    border-radius: 6px;
+
+    transition: 0.3s ease;
+    border: 1px solid transparent;
+}
+
+/* Hover */
+.link-filt:hover {
+    background: #fde047;
+    border-color: #facc15;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+/* Filtro ativo (opcional) — caso queira ativar via classe */
+.link-filt.ativo {
+    background: #facc15;
+    border-color: #d4a017;
+    color: #000;
+    font-weight: 600;
+}
+
+/* ====== RESPONSIVO ====== */
+@media (max-width: 600px) {
+    .filtros {
+        justify-content: center;
+        padding: 12px;
+    }
+
+    .link-filt {
+        font-size: 0.95rem;
+        padding: 7px 12px;
+    }
+}
+</style>
 <div class="filtros">
     <a href="?" class="link-filt">Todas</a>
 

@@ -1,3 +1,85 @@
+<style>
+    /* ====== GRID DA LISTA DE PRODUTOS ====== */
+.lista-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 30px 10px;
+}
+
+/* ====== CARD DO PRODUTO ====== */
+.card-produto {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    padding: 18px;
+    text-align: center;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Hover estiloso */
+.card-produto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* ====== IMAGEM DO PRODUTO ====== */
+.img-produto {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: #ddd;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* ====== TÍTULO E DESCRIÇÃO ====== */
+.card-produto h3 {
+    font-size: 1.2rem;
+    color: #1f2937;
+    margin: 10px 0 5px;
+}
+
+.card-produto p {
+    color: #4b5563;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+/* Preço em destaque */
+.card-produto .preco {
+    font-size: 1.2rem;
+    color: #111827;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* ====== BOTÃO ====== */
+.btn {
+    display: inline-block;
+    background: #facc15;
+    color: #000;
+    font-weight: 600;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #eab308;
+}
+
+/* Disponibilidade */
+.card-produto p[style] {
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+</style>
 <div class="lista-produtos">
     {% for produto in produtos %}
         <div class="card-produto">

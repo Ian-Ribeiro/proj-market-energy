@@ -1,5 +1,115 @@
-{% include 'header.html'%}
+{% include 'header.html' %}
 <div class="carrinho-container">
+    <style>
+        /* ====== CONTAINER PRINCIPAL ====== */
+        .carrinho-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 25px;
+
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* ====== TÍTULOS ====== */
+        .carrinho-container h1,
+        .carrinho-container h2 {
+            color: #111827;
+            text-align: center;
+        }
+
+        .total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: right;
+            color: #000;
+        }
+
+        /* ====== TABELA ====== */
+        .tabela-carrinho {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tabela-carrinho th,
+        .tabela-carrinho td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .tabela-carrinho th {
+            background: #f3f4f6;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        /* ====== PRODUTO COM IMAGEM ====== */
+        .produto-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .produto-info img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* ====== BOTÃO REMOVER ====== */
+        .btn-remover {
+            background: #f87171;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .btn-remover:hover {
+            background: #ef4444;
+            transform: scale(1.05);
+        }
+
+        /* ====== MENSAGEM DE CARRINHO VAZIO ====== */
+        .carrinho-container p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        /* ====== RESPONSIVO ====== */
+        @media (max-width: 600px) {
+            .produto-info {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .tabela-carrinho th,
+            .tabela-carrinho td {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+
+            .btn-remover {
+                padding: 5px 10px;
+                font-size: 0.9rem;
+            }
+
+            .total {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
 
     <h1>Seu carrinho</h1>
 
