@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Dados</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; display: flex; justify-content: center; padding-top: 60px; }
+        .box { background: white; padding: 30px; width: 500px; border-radius: 10px; box-shadow: 0 0 12px #0002; }
+        label { font-weight: bold; display: block; margin-top: 10px; }
+        input { width: 100%; padding: 10px; margin-top: 4px; border-radius: 6px; border: 1px solid #ccc; }
+        button { width: 100%; padding: 12px; margin-top: 20px; border: none; background: #333; color: white; border-radius: 6px; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <form method="POST" action="{% url 'cadastrar_pessoa' %}">
+    {% csrf_token %}
+
+    {% if messages %}
+      <div class="messages">
+        {% for m in messages %}
+          <p class="msg">{{ m }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% for field in form %}
+        <label>{{ field.label_tag }}</label>
+        {{ field }}
+        {% if field.errors %}
+            <div class="field-errors">
+                {% for err in field.errors %}
+                    <small style="color:red">{{ err }}</small>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <button type="submit">Próximo</button>
+</form>
+</div>
+
+</body>
+</html>

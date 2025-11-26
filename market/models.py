@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Endereco(models.Model):
@@ -19,13 +20,28 @@ class Cliente(models.Model):
     email = models.EmailField()
     telefone_principal = models.CharField(max_length=15)
     telefone_secundario = models.CharField(max_length=15, blank=True, null=True)
-    endereco = models.OneToOneField(Endereco, on_delete=models.CASCADE)
+
+    # ENDEREÇO OPCIONAL
+    endereco = models.OneToOneField(
+        "Endereco",
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True
+    )
 
     class Meta:
         abstract = True
 
 
 class PessoaFisica(Cliente):
+    # 🔥 Vincula ao usuário do Django
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name="pessoa_fisica",
+        null=True
+    )
+
     nome = models.CharField(max_length=150)
     cpf = models.CharField(max_length=11, unique=True)
     rg = models.CharField(max_length=20, blank=True, null=True)
@@ -36,6 +52,14 @@ class PessoaFisica(Cliente):
 
 
 class PessoaJuridica(Cliente):
+    # 🔥 Vincula ao usuário do Django
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name="pessoa_juridica",
+        null=True
+    )
+
     razao_social = models.CharField(max_length=150)
     nome_fantasia = models.CharField(max_length=150, blank=True, null=True)
     cnpj = models.CharField(max_length=14, unique=True)
@@ -45,7 +69,8 @@ class PessoaJuridica(Cliente):
 
     def __str__(self):
         return self.razao_social
-    
+
+
 class Produto(models.Model):
     nome = models.CharField(max_length=150)
     categoria = models.CharField(max_length=100)
@@ -60,4 +85,3 @@ class Produto(models.Model):
 
     def __str__(self):
         return self.nome
-

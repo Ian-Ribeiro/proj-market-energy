@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Conta</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; padding: 40px; }
+        .box { background: white; padding: 30px; width: 500px; margin:auto;
+               border-radius: 10px; box-shadow: 0 0 12px #0002; }
+        h2 { margin-bottom: 20px; }
+        p { margin: 8px 0; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Bem-vindo, {{ user.username }}</h2>
+
+    {% if pessoa %}
+        <p><strong>Tipo:</strong> 
+            {% if pessoa.cpf %}Pessoa Física{% else %}Pessoa Jurídica{% endif %}
+        </p>
+
+        {% if pessoa.cpf %}
+            <p><strong>Nome:</strong> {{ pessoa.nome }}</p>
+            <p><strong>CPF:</strong> {{ pessoa.cpf }}</p>
+        {% else %}
+            <p><strong>Razão Social:</strong> {{ pessoa.razao_social }}</p>
+            <p><strong>CNPJ:</strong> {{ pessoa.cnpj }}</p>
+        {% endif %}
+
+        <p><strong>Email:</strong> {{ pessoa.email }}</p>
+
+        {% if pessoa.endereco %}
+            <p><strong>Endereço:</strong> {{ pessoa.endereco }}</p>
+        {% else %}
+            <p><strong>Endereço:</strong> Não cadastrado</p>
+        {% endif %}
+    {% endif %}
+
+    <br>
+    <a href="{% url 'logout' %}">Sair</a>
+</div>
+
+</body>
+</html>

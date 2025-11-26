@@ -1,91 +1,94 @@
 <header class="header">
     <style>
-        /* ====== HEADER ====== */
-.header {
-    width: 100%;
-    background: linear-gradient(90deg, #111827, #1f2937);
-    padding: 18px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    position: sticky;
-    top: 0;
-    z-index: 999;
-}
+        .header {
+            width: 100%;
+            background: linear-gradient(90deg, #111827, #1f2937);
+            padding: 18px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
 
-/* Container central */
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 25px;
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #facc15;
+            margin: 0;
+            cursor: pointer;
+        }
+        .logo span {
+            color: #fff;
+        }
 
-/* ====== LOGO ====== */
-.logo {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #facc15; /* amarelo solar */
-    margin: 0;
-    cursor: pointer;
-}
-.logo span {
-    color: #fff;
-}
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            margin: 0;
+            padding: 0;
+        }
 
-/* ====== NAV MENU ====== */
-.nav-list {
-    display: flex;
-    list-style: none;
-    gap: 28px;
-    margin: 0;
-    padding: 0;
-}
+        .nav-list a {
+            font-size: 1.1rem;
+            color: #f9fafb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s ease;
+            padding-bottom: 3px;
+        }
 
-.nav-list a {
-    font-size: 1.1rem;
-    color: #f9fafb;
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s ease;
-    padding-bottom: 3px;
-}
+        .nav-list a:hover {
+            color: #facc15;
+            border-bottom: 2px solid #facc15;
+        }
 
-.nav-list a:hover {
-    color: #facc15;
-    border-bottom: 2px solid #facc15;
-}
-
-/* ====== RESPONSIVIDADE ====== */
-@media (max-width: 768px) {
-    
-    .container {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .nav-list {
-        flex-direction: column;
-        gap: 12px;
-        align-items: center;
-    }
-
-    .nav-list a {
-        font-size: 1.2rem;
-    }
-}
-
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-list {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+            .nav-list a {
+                font-size: 1.2rem;
+            }
+        }
     </style>
+
     <div class="container">
         <h1 class="logo">Solarys<span>.com</span></h1>
-        <nav class="nav" id="nav-menu">
+
+        <nav class="nav">
             <ul class="nav-list">
+
                 <li><a href="{% url 'index' %}">Início</a></li>
-                <li><a href="{% url 'cads' %}">Cadastre-se</a></li>
-                <li><a href="{% url 'admin:index' %}">Entrar</a></li>
+
+                {% if user.is_authenticated %}
+                    <!-- Usuário logado -->
+                    <li><a href="{% url 'minha_conta' %}">Minha Conta</a></li>
+                    <li><a href="{% url 'logout' %}">Sair</a></li>
+                {% else %}
+                    <!-- Visitante -->
+                    <li><a href="{% url 'criar_login' %}">Criar Conta</a></li>
+                    <li><a href="{% url 'login' %}">Entrar</a></li>
+                {% endif %}
+
                 <li><a href="{% url 'carrinho' %}">Meu Carrinho</a></li>
                 <li><a href="#">Sobre</a></li>
+
             </ul>
         </nav>
     </div>

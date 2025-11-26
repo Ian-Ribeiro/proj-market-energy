@@ -13,7 +13,6 @@
     border-radius: 12px;
     box-shadow: 0 4px 14px rgba(0,0,0,0.1);
     padding: 18px;
-    text-align: center;
     transition: 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -59,6 +58,7 @@
 
 /* ====== BOTÃO ====== */
 .btn {
+    width: 65px;
     display: inline-block;
     background: #facc15;
     color: #000;
@@ -93,7 +93,7 @@
             {% endif %}
 
             <h3>{{ produto.nome }}</h3>
-            <p>{{ produto.descricao }}</p>
+
             <p class="preco">R$ {{ produto.preco }}</p>
 
             <a href="{% url 'produto_detalhe' produto.id %}" class="btn">Ver mais</a>

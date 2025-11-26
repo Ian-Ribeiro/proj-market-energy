@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Escolher Tipo</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; display: flex; justify-content: center; padding-top: 60px; }
+        .box { background: white; padding: 30px; width: 400px; border-radius: 10px; box-shadow: 0 0 12px #0002; text-align: center; }
+        button { width: 100%; padding: 12px; margin-top: 18px; border: none; background: #333; color: white; border-radius: 6px; }
+        select { width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #ccc; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Qual tipo de pessoa você é?</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.tipo }}
+
+        <button type="submit">Continuar</button>
+    </form>
+</div>
+
+</body>
+</html>
